@@ -13,7 +13,7 @@ export default class teamCon {
 
   public getIdTeam = async (req: Request, res: Response): Promise<Response> => {
     const { id } = req.params;
-    const team = await this.service.getOneTeam(parseInt(id));
+    const team = await this.service.getOneTeam(Number(id));
 
     return res.status(200).send(team);
   };
