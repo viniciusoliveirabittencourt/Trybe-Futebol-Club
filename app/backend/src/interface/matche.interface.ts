@@ -5,4 +5,4 @@ export interface IMatche {
   awayTeam: number;
   awayTeamGoals: number;
   inProgress: boolean;
-};
+}
