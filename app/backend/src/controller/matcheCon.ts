@@ -35,7 +35,8 @@ export default class MatcheCon {
       return res.status(404).send({ message: 'There is no team with such id!' });
     }
 
-    const newMatche = await this.service.createMatche(homeTeam, homeTeamGoals, awayTeam, awayTeamGoals);
+    const newMatche = await this.service
+      .createMatche(homeTeam, homeTeamGoals, awayTeam, awayTeamGoals);
 
     return res.status(201).send(newMatche);
   };
