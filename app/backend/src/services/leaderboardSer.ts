@@ -103,7 +103,7 @@ export default class leaderboardSer {
       efficiency: 0,
     });
 
-    private buildTableAway = (arr: IMatche[], teamName: string) => arr
+  private buildTableAway = (arr: IMatche[], teamName: string) => arr
     .reduce((acc, y): ILeaderboardPlaca => {
       const buildObject = this.buildObjectTableAway(acc, y);
       return buildObject;
@@ -120,26 +120,26 @@ export default class leaderboardSer {
       efficiency: 0,
     });
 
-    private buildTableGeneral = (obj: ILeaderboardPlaca, objT: ILeaderboardPlaca)
-    : ILeaderboardPlaca => {
-      const someObject = {
-        name: obj.name,
-        totalPoints: obj.totalPoints + objT.totalPoints,
-        totalGames: obj.totalGames + objT.totalGames,
-        totalVictories: obj.totalVictories + objT.totalVictories,
-        totalDraws: obj.totalDraws + objT.totalDraws,
-        totalLosses: obj.totalLosses + objT.totalLosses,
-        goalsFavor: obj.goalsFavor + objT.goalsFavor,
-        goalsOwn: obj.goalsOwn + objT.goalsOwn,
-      };
-
-      const funcsObject = {
-        goalsBalance: someObject.goalsFavor - someObject.goalsOwn,
-        efficiency: this.calcEfficiency(someObject.totalPoints, someObject.totalGames),
-      };
-
-      return Object.assign({}, someObject, funcsObject);
+  private buildTableGeneral = (obj: ILeaderboardPlaca, objT: ILeaderboardPlaca)
+  : ILeaderboardPlaca => {
+    const someObject = {
+      name: obj.name,
+      totalPoints: obj.totalPoints + objT.totalPoints,
+      totalGames: obj.totalGames + objT.totalGames,
+      totalVictories: obj.totalVictories + objT.totalVictories,
+      totalDraws: obj.totalDraws + objT.totalDraws,
+      totalLosses: obj.totalLosses + objT.totalLosses,
+      goalsFavor: obj.goalsFavor + objT.goalsFavor,
+      goalsOwn: obj.goalsOwn + objT.goalsOwn,
     };
+
+    const funcsObject = {
+      goalsBalance: someObject.goalsFavor - someObject.goalsOwn,
+      efficiency: this.calcEfficiency(someObject.totalPoints, someObject.totalGames),
+    };
+
+    return { ...someObject, ...funcsObject };
+  };
 
   public leaderHome = async () => {
     const allTeam = await this.serviceTeam.getAllTeams();
