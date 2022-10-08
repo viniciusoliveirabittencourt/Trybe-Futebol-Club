@@ -13,9 +13,6 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('Testando a rota "/login"', () => {
-  /**
-   * Exemplo do uso de stubs com tipos
-   */
 
   let chaiHttpResponse: Response;
 
